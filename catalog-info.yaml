@@ -1,0 +1,26 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: iac-state-machine-module
+  title: AWS State Machine IaC Module
+  description: OpenTofu/Terraform module for AWS State Machine resources
+  annotations:
+    github.com/project-slug: ibkpe-iac-org/dso-iac-module-aws-state-machine
+    backstage.io/techdocs-ref: dir:.
+    opentofu.io/module-provider: aws
+  tags:
+    - opentofu
+    - terraform
+    - module
+    - iac
+    - aws
+    - state-machine
+  links:
+    - url: https://github.com/ibkpe-iac-org/dso-iac-module-aws-state-machine
+      title: Source Code
+      icon: github
+spec:
+  type: opentofu-module
+  lifecycle: production
+  owner: dso
+  system: dso

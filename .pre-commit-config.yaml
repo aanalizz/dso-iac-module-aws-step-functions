@@ -1,0 +1,29 @@
+repos:
+  # Hooks generales
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: detect-private-key
+
+  # Terraform / OpenTofu
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.96.1
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+      - id: terraform_tflint
+      - id: terraform_trivy          # análisis de seguridad
+      - id: terraform_docs           # genera README automáticamente
+        args:
+          - --hook-config=--path-to-file=README.md
+          - --hook-config=--add-on-creation=true
+
+  # Checkov (IaC security scanning)
+  - repo: https://github.com/bridgecrewio/checkov
+    rev: 3.2.0
+    hooks:
+      - id: checkov
+        args: [--quiet, --skip-path, .github/, --skip-path, tests/, --compact, --framework=terraform]
